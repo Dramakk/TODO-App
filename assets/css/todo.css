@@ -31,7 +31,8 @@ h1{
     font-weight: normal;
 }
 li{
-    height: 40px;
+    height: auto;
+    word-wrap: break-word;
     line-height: 40px;
     color: #666;
 }
