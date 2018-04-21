@@ -30,5 +30,6 @@ $("button").click(function(){
 //     event.stopPropagation();
 // })
 $(".fa-plus").on('click', function(){
+    $("button").fadeToggle();
     $("input").fadeToggle();
 })
