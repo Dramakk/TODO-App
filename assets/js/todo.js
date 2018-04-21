@@ -12,14 +12,18 @@ $("ul").on('click', "span", function(event){
 $("input").on('keypress', function(event){
     if(event.which === 13){
         var toDoText = $("input").val();
-        $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
-        $(this).val("");
+        if(toDoText !== ""){
+            $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
+            $(this).val("");
+        }
     }
 })
 $("button").click(function(){
     var toDoText = $("input").val();
-    $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
-    $("input").val("");
+    if(toDotext !== ""){
+        $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
+        $("input").val("");
+    }
 })
 // $("ul").on("mouseover", "li", function(event){
 //     $(this).children().fadeIn(500);
@@ -30,5 +34,6 @@ $("button").click(function(){
 //     event.stopPropagation();
 // })
 $(".fa-plus").on('click', function(){
+    $("button").fadeToggle();
     $("input").fadeToggle();
 })
