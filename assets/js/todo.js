@@ -18,10 +18,10 @@ $("input").on('keypress', function(event){
         }
     }
 })
-$("button").click(function(){
-    var toDoText = $("input").val();
-    if(toDotext !== ""){
-        $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
+$("button").on('click', function(){
+    var text = $("input").val();
+    if(text !== ""){
+        $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + text + "</li>");
         $("input").val("");
     }
 })
