@@ -8,19 +8,19 @@ $("ul").on('click', "span", function(event){
         $(this).remove()
     });
     event.stopPropagation();
-});
+})
 $("input").on('keypress', function(event){
     if(event.which === 13){
         var toDoText = $("input").val();
         $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
         $(this).val("");
     }
-});
+})
 $("button").click(function(){
     var toDoText = $("input").val();
     $("ul").append("<li><span><i class='far fa-trash-alt'></i></span>" + toDoText + "</li>");
     $("input").val("");
-});
+})
 // $("ul").on("mouseover", "li", function(event){
 //     $(this).children().fadeIn(500);
 //     event.stopPropagation();
@@ -32,4 +32,4 @@ $("button").click(function(){
 $(".fa-plus").on('click', function(){
     $("button").fadeToggle();
     $("input").fadeToggle();
-});
+})
