@@ -3,6 +3,7 @@ const express = require("express"),
       bodyParser = require("body-parser"),
       mongoose = require("mongoose");
 
+//basic setup
 app.use(express.static(__dirname + '/public'));
 mongoose.connect("mongodb://localhost:27017/TODO");
 app.set("view engine", "ejs");
@@ -15,6 +16,7 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model("Todo", todoSchema);
 
+//Adding new TODO to the database and redirecting to the home page
 app.post("/todo", function(req, res){
   //get data from form
   var textBody = req.body.textBody;
@@ -30,7 +32,19 @@ app.post("/todo", function(req, res){
     }
   });
 })
-// TODO: Add remove function from database
+//Deletes TODO by it's textBody given as parameter in DELETE request
+app.delete("/remove", function(req, res){
+  Todo.deleteOne({body: req.body.textBody}, function(err){
+    if(err){
+      console.log("Something went wrong");
+      console.log(err);
+      res.redirect("/error");
+    } else{
+      res.redirect("/");
+    }
+  });
+});
+//Renders whole list of TODOs from the database
 app.get("/", function(req, res){
   Todo.find({}, function(err, allTodos){
     if(err){
@@ -42,6 +56,7 @@ app.get("/", function(req, res){
     }
   });
 });
+//Basic error handling
 app.get("/error", function(req, res) {
   res.render("error.html");
 })
